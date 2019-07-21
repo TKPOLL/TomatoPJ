@@ -1,2 +1,1 @@
-# AIcon
-AIコンテスト用
+# TomatoPJ
