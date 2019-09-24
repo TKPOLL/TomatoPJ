@@ -18,11 +18,21 @@ inputDir = 'D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\input'
 outputFile = "D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\output\\countResult.txt"
 
 #インプットファイルに入っているファイルの一覧をリストに追加（フルパス）
+inputDirs=[]
 inputFiles=[]
-for x in os.listdir(inputDir):
-    #inputDir以下に格納されているものがファイルだった場合、フルパスを作成
-    if not os.path.isdir(inputDir + '\\' + x):
-        inputFiles.append(inputDir + '\\' + x)
+
+#インプット元ディレクトリに入ってるディレクトリ一覧を作成
+for dir in os.listdir(inputDir):
+    if os.path.isdir(inputDir +'\\'+dir):
+        inputDirs.append(inputDir +'\\'+dir)
+print(inputDirs)
+
+#インプットファイルに入っているファイルの一覧をリストに追加（全量フルパス）
+for dir in inputDirs:
+    for file in os.listdir(dir):
+        #inputDir以下に格納されているものがファイルだった場合、フルパスを作成
+        if not os.path.isdir(dir + '\\' + file):
+            inputFiles.append(dir + '\\' + file)
 
 print(inputFiles)
 
@@ -34,7 +44,6 @@ for inputFile in inputFiles:
     # パース
     mecab = MeCab.Tagger()
     parse = mecab.parse(data)
-    print("パース")
     lines = parse.split('\n')
     items = (re.split('[\t,]', line) for line in lines)
 
