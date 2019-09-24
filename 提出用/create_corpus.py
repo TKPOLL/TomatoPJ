@@ -15,7 +15,7 @@ from collections import Counter
 # ファイルパス
 inputDir = 'D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\input'
 #infile = "D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\input\\パルプ・紙_522894.xml"
-outputFile = "D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\output\\countResult.txt"
+outputFile = "D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\output\\countResult.csv"
 
 #インプットファイルに入っているファイルの一覧をリストに追加（フルパス）
 inputDirs=[]
@@ -38,7 +38,8 @@ print(inputFiles)
 
 for inputFile in inputFiles:
     print(inputFile)
-
+    conpCode = inputFile.lstrip(inputDir).split('\\')[0]
+    print(conpCode)
     inFile = open(inputFile, 'r', encoding='utf-8')
     data = inFile.read()
     # パース
@@ -48,14 +49,14 @@ for inputFile in inputFiles:
     items = (re.split('[\t,]', line) for line in lines)
 
     # 名詞をリストに格納
-    words = [str(item[0])
+    words = ['"'+conpCode+'","'+str(item[0])+'"'
             for item in items
                 if (item[0] not in ('EOS', '', 't', 'ー') and
                      item[1] == '名詞' and item[2] == '一般')]
 
     #辞書の中をリスト化
     if not os.path.exists(outputFile):
-        outFile = open(outputFile, 'w', encoding='utf-8',newline='\n')
+        outFile = open(outputFile, 'a', encoding='utf-8',newline='\n')
         outFile.close()
     outFile = open(outputFile, 'r', encoding='utf-8',newline='\n')
     corpusDatas=[]
@@ -69,7 +70,7 @@ for inputFile in inputFiles:
     # リストの重複をcounterリストへ格納
     counter = Counter(words)
     # 重複を除いたファイルを出力ファイルへ書き込み
-    outFile = open(outputFile, 'w', encoding='utf-8',newline='\n')
+    outFile = open(outputFile, 'a', encoding='utf-8',newline='\n')
     for word, count in counter.most_common():
         outFile.write(word + "\n")
     outFile.close()
