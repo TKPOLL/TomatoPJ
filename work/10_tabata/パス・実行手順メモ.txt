@@ -11,10 +11,15 @@
 | ├ソースコード（？　おそらく不要）
 | ├input
 | |  ├learn
-| |  ├o1_農林水産
+| |  |  ├o1_農林・水産業
 | |  |   ├12345.xml
 ・・・・
 | |  |   └xxxxx.xml
+・・・・
+| |  |  └99_サービス業
+| |  |   ├12345.xml
+・・・・
+| |  |   └XXXXX.xml
 | |  └question
 | |      ├0001.txt
 ・・・・
@@ -49,6 +54,6 @@
 ②cmdで 「cd ★チーム名のフォルダ」（②で落としたパス）　を実行する。
 例：
 
-③cmdで「python3 create_copus.py」を実行する
-（）
+③cmdで「python3 /program/create_corpus_v1.py」を実行する
+
 ④
