@@ -49,6 +49,6 @@
 ②cmdで 「cd ★チーム名のフォルダ」（②で落としたパス）　を実行する。
 例：
 
-③cmdで「python3 create_copus.py > myCopus.csv」を実行する
+③cmdで「python3 create_copus.py」を実行する
 （）
 ④
