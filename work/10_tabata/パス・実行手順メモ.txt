@@ -51,9 +51,10 @@
 
 手順：
 ①実行したいディレクトリに「★チーム名のフォルダ」をコピーする
-②cmdで 「cd ★チーム名のフォルダ」（②で落としたパス）　を実行する。
+②cmdで 「cd ★チーム名のフォルダ/program」（②で落としたパス）　を実行する。
 例：
 
-③cmdで「python3 /program/create_corpus_v1.py」を実行する
+③cmdで「python3 create_corpus_v1.py」を実行する
 
-④
+④③cmdで「python3 classification_company_v1.py」を実行する
+
