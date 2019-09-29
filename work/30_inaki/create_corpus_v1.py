@@ -3,7 +3,6 @@
 
 import os
 import MeCab
-import sys
 import re
 from collections import Counter
 
@@ -12,8 +11,15 @@ from collections import Counter
 #outputFile = r"C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\countResult.csv"
 
 # テストファイルパス
+#修正イメージ
+#inputDir = r'\\program\\input\\learn'
+#outputFile = r"C:\\Users\\1627538\\Desktop\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\countResult.csv"
 inputDir = r'C:\\Users\\1627538\\Desktop\\学習用データ_20190702再配布\\学習用データ_20190702再配布'
-outputFile = r"C:\\Users\\1627538\\Desktop\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\.csv"
+outputFile = r"C:\\Users\\1627538\\Desktop\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\countResult.csv"
+
+
+
+
 
 # 家ファイルパス
 #inputDir = r'D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\input'
