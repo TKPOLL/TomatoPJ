@@ -8,17 +8,14 @@ import re
 from collections import Counter
 
 # ファイルパス
-#inputDir = r'C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布'
-#outputFile = r"C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\countResult.csv"
+# ---------------------------- 変更値 -----------------------------------------------
 
-# テストファイルパス
-inputDir = r'C:\\Users\\1627538\\Desktop\\学習用データ_20190702再配布\\学習用データ_20190702再配布'
-outputFile = r"C:\\Users\\1627538\\Desktop\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\.csv"
+#inputファイルが入っているディレクトリのパス
+inputDir = r'C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布'
+#outputファイルのパス：ファイル名まで記載（CSVファイル）
+outputFile = r"C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\countResult.csv"
 
-# 家ファイルパス
-#inputDir = r'D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\input'
-#outputFile = r"D:\\PycharmProjects\\TomatoPJ\\work\\30_inaki\\countResult.csv"
-
+# -----------------------------------------------------------------------------------
 
 #インプットファイルに入っているファイルの一覧をリストに追加（フルパス）
 inputDirs=[]
@@ -29,13 +26,13 @@ counter = []
 words = []
 dirWords = []
 corpusWords = []
-uniqWords=[]
-uniq_counter=[]
+compWords = []
+uniqWords = []
+uniqCounter = []
 
 #インプット元ディレクトリに入ってるディレクトリ一覧を作成
 for dir in os.listdir(inputDir):
     if os.path.isdir(inputDir +'\\'+dir):
-        #inputDirs.append(inputDir +'\\'+dir)
         inputDirs.append(dir)
 
 #インプットファイルに入っているファイルの一覧をリストに追加（全量フルパス）
@@ -58,7 +55,13 @@ for dir in inputDirs:
         items = (re.split('[\t,]', line) for line in lines)
 
         #名詞をリストに格納
-        words = (['"'+conpId+'","'+str(item[0])+'"'
+        #words = (['"'+conpId+'","'+str(item[0])+'"'
+                #for item in items
+                    #if (item[0] not in ('EOS', '', 't', 'ー','\n','\t',' ') and not re.match('[\\sa-zA-Z0-9]{1}$' , str(item[0])) and
+                        #(item[1] == '名詞' and item[2] == '一般'))])
+		
+		#名詞をリストに格納
+        words = ([item[0]
                 for item in items
                     if (item[0] not in ('EOS', '', 't', 'ー','\n','\t',' ') and not re.match('[\\sa-zA-Z0-9]{1}$' , str(item[0])) and
                         (item[1] == '名詞' and item[2] == '一般'))])
@@ -66,13 +69,17 @@ for dir in inputDirs:
         dirWords.extend(words)
         #インプットファイルをクローズ
         inFile.close()
-    counter.extend(Counter(dirWords).keys())
     
-uniqCounter = set(counter)
+    counter.extend(Counter(dirWords).keys())
+    uniqCounter = set(counter)
+    
+    for word in uniqCounter:
+    	compWords.append(str('"' + conpId + '","' + str(word) + '"'))
+    
 
 # 重複を除いたファイルを出力ファイルへ書き込み
 outFile = open(outputFile, 'a', encoding='utf-8',newline='\n')
-for word in Counter(uniqCounter).keys():
+for word in Counter(compWords).keys():
     if not str(word) == '':
         outFile.write(str(word) + "\n")
 outFile.close()
