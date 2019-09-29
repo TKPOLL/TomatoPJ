@@ -90,7 +90,7 @@ for dir in inputDirs:
     
 
 # 重複を除いたファイルを出力ファイルへ書き込み
-outFile = open(outputFile, 'a', encoding='utf-8',newline='\n')
+outFile = open(outputFile, 'w', encoding='utf-8',newline='\n')
 for word in Counter(compWords).keys():
     if not str(word) == '':
         outFile.write(str(word) + "\n")
