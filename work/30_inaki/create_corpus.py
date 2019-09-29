@@ -64,7 +64,7 @@ for dir in inputDirs:
         # #outFile = open(outputFile, 'r', encoding='utf-8',newline='\n')
         # リストの重複をcounterリストへ格納
 
-        dirWords.extend(Counter(words).most_common())
+        dirWords = dirWords.extend(Counter(words).most_common())
         print(dirWords)
         #インプットファイルをクローズ
         inFile.close()
