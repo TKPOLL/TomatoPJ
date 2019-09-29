@@ -9,14 +9,23 @@ from collections import Counter
 # ファイルパス
 # ---------------------------- 変更値 -----------------------------------------------
 
-#修正イメージ
+#修正イメージ(以下指定じゃ動きませんでした)
 #inputDir = r'\\program\\input\\learn'
 #outputFile = r"\\program\\myCopus.csv"
 
 #inputファイルが入っているディレクトリのパス
-inputDir = r'C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布'
+#inputDir = r'C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布'
 #outputファイルのパス：ファイル名まで記載（CSVファイル）
-outputFile = r"C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\myCopus.csv"
+#outputFile = r"C:\\Users\1627538\\Desktop\\ショートカット\\業務\\AIコンテスト\\学習用データ_20190702再配布\\学習用データ_20190702再配布\\myCopus.csv"
+
+#相対パス指定
+currentDir = os.getcwd()
+strCurrentDir = str(currentDir)
+defultInputPath = 'input\\learn'
+outputFileName =  'myCopus.csv'
+
+inputDir = currentDir + '\\' + defultInputPath
+outputFile = currentDir + '\\' + outputFileName
 
 # -----------------------------------------------------------------------------------
 
