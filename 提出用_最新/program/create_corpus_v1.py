@@ -3,7 +3,6 @@
 
 import os
 import MeCab
-import sys
 import re
 from collections import Counter
 
